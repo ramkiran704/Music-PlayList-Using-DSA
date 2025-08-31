@@ -17,6 +17,5 @@ int Search_Music(){
 int Search_Music_Artist(){
 
 }
-void main(){
-
+int main(){
 }
