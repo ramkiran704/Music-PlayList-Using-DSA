@@ -8,27 +8,27 @@ struct Music {
   struct Music* next;
   struct Music* prev;
 };
-void Display_PlayList(){
+void Display_PlayList(){// rishabh
 
 }
-int Add_Music(){
+int Add_Music(){//richa
 
 }
-int Remove_Music(){
+int Remove_Music(){// richa
 
 }
-int Search_Music(){
+int Search_Music(){// rishabh
 
 }
-int Search_Music_Artist(){
+int Search_Music_Artist(){//ram
 
 }
-int Playnext(){
+int Playnext(){//parvathy
   
 }
-int Playprev(){
+int Playprev(){//pranav
   
 }
-int main(){
+int main(){//ram
   
 }
