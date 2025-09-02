@@ -3,12 +3,18 @@
 #include<stdlib.h>
 #include<string.h>
 char song[50];
+char artist_name[50];
 struct Music {
   char artist[50];
   char song[50];
   struct Music* next;
   struct Music* prev;
 };
+int Display_Specific_Music(struct Music* Node){
+  if(Node!=NULL){
+    printf("SONG NAME:%s\tARTIST NAME:%s",Node->song,Node->artist);
+  }
+}
 int Create_Music(){//pranav
   
 }
@@ -24,8 +30,21 @@ int Remove_Music(){// richa
 int Search_Music(){// rishabh
 
 }
-int Search_Music_Artist(){//ram
-
+int Search_Music_Artist(char artistname[]){//ram
+  struct Music* temp=head;
+  int i=0; 
+  while(temp!=NULL){
+    if(strcmp(temp->artist,artistname)==0){
+      Display_Specific_Music(temp);
+      i=1;
+    }
+    else{
+      temp=temp->next;
+    }
+  }
+  if(i==0){
+    printf("Oops... NO ARTIST IS PRESENT");
+  }
 }
 int PlayNext(){//parvathy
   
@@ -50,7 +69,9 @@ int main(){//ram
               break;
       case 3:Search_Music();
               break;
-      case 4:Search_Music_Artist();
+      case 4: printf("ENTER THE NAME OF ARTIST:");
+              scanf("%s",artist_name);
+              Search_Music_Artist(artist_name);
               break;
       case 5:PlayNext();
               break;
