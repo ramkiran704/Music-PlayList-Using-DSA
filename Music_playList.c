@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+char song[50];
 struct Music {
   char artist[50];
   char song[50];
@@ -23,12 +24,40 @@ int Search_Music(){// rishabh
 int Search_Music_Artist(){//ram
 
 }
-int Playnext(){//parvathy
+int PlayNext(){//parvathy
   
 }
-int Playprev(){//pranav
+int PlayPrev(){//parvathy
+  
+}
+int Shuffle_PlayList(){//pranav
   
 }
 int main(){//ram
-  
+  int choice;
+  struct Music* playlist=NULL;
+  printf("----------------------------[MUSIC PLAYLIST]--------------------------------");
+  do{
+    printf("PRESS \n1:CREATE A PLAY LIST\n2:REMOVE A SONG FROM PLAYLIST\n3:SEARCH A SONG\n4:SEARCH A SONG BY ARTIST\n");
+    printf("5:PLAY NEXT SONG\n6:PLAY PREVIOUS SONG\n7:SHUFFLE PLAYLIST\n8:DISPLAY PLAYLIST\n9:EXIT");
+    switch (choice){
+      case 1:Add_Music();
+              break;
+      case 2:Remove_Music();
+              break;
+      case 3:Search_Music();
+              break;
+      case 4:Search_Music_Artist();
+              break;
+      case 5:PlayNext();
+              break;
+      case 6:PlayPrev();
+              break;
+      case 7:Shuffle_Playlist();
+              break;
+      case 8:Display_PlayList();
+              break;
+      case 9:exit(0);
+    }
+  }while(choice!=9);
 }
