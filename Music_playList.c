@@ -36,7 +36,7 @@ int Shuffle_PlayList(){//pranav
 int main(){//ram
   int choice;
   struct Music* playlist=NULL;
-  printf("----------------------------[MUSIC PLAYLIST]--------------------------------");
+  printf("----------------------------[   MUSIC PLAYLIST   ]--------------------------------");
   do{
     printf("PRESS \n1:CREATE A PLAY LIST\n2:REMOVE A SONG FROM PLAYLIST\n3:SEARCH A SONG\n4:SEARCH A SONG BY ARTIST\n");
     printf("5:PLAY NEXT SONG\n6:PLAY PREVIOUS SONG\n7:SHUFFLE PLAYLIST\n8:DISPLAY PLAYLIST\n9:EXIT");
