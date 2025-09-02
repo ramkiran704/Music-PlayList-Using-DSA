@@ -9,6 +9,9 @@ struct Music {
   struct Music* next;
   struct Music* prev;
 };
+int Create_Music(){//pranav
+  
+}
 void Display_PlayList(){// rishabh
 
 }
@@ -58,6 +61,8 @@ int main(){//ram
       case 8:Display_PlayList();
               break;
       case 9:exit(0);
+              break;
+      default: printf("PROVIDED REQUESTS ARE INVALID,CHOOSE THE PROPER INPUTS");
     }
   }while(choice!=9);
 }
