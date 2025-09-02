@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-char song[50];
+char song_name[50];
 char artist_name[50];
 struct Music {
   char artist[50];
@@ -43,7 +43,7 @@ int Search_Music_Artist(char artistname[]){//ram
     }
   }
   if(i==0){
-    printf("Oops... NO ARTIST IS PRESENT");
+    printf("Oops... NO ARTIST IS PRESENT\n");
   }
 }
 int PlayNext(){//parvathy
