@@ -21,11 +21,42 @@ int Create_Music(){//pranav
 void Display_PlayList(){// rishabh
 
 }
-int Add_Music(){//richa
-
+void Add_Music(char*title, char*artist)//Richa
+{
+  struct Music*newNode = Create_Music(title,artist);
+  if(head == NULL)
+    head = current = newNode;
+  else{
+    struct Music*temp = head;
+    while(temp->next!=NULL)
+      temp=temp->next;
+    temp->next=newNode;
+    newNode->prev=temp;
+  }
+  printf("Added:%s by %s\n",title,artist);  
 }
-int Remove_Music(){// richa
-
+void Remove_Music(char*title)// richa
+{
+  struct Music*temp = head;
+  while(temp!=NULL)
+  {
+    if(strcmp(temp->song,title)==0)
+    {
+      if(temp->prev!=NULL)
+        temp->prev->next=temp->next;
+      else
+        head=temp->next;
+      if(temp->next!=NULL)
+        temp->next->prev=temp->prev;
+      if(current==temp)
+        current=head;
+      free(temp);
+      printf("The removed: %s\n",title);
+      return;
+    }
+    temp=temp->next;
+  }
+  printf("Song not found\n");  
 }
 int Search_Music(){// rishabh
 
