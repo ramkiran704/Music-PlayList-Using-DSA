@@ -78,10 +78,30 @@ int Search_Music_Artist(char artistname[]){//ram
   }
 }
 int PlayNext(){//parvathy
-  
+      if (current == NULL) {
+        printf("No song is currently selected.\n");
+        return 0;
+    }
+    if (current->next == NULL) {
+        printf("You are at the last song. No next song available.\n");
+        return 0;
+    }
+    current = current->next;
+    printf("Now playing: %s by %s\n", current->song, current->artist);
+    return 1;
 }
 int PlayPrev(){//parvathy
-  
+   if (current == NULL) {
+        printf("No song is currently selected.\n");
+        return 0;
+    }
+    if (current->prev == NULL) {
+        printf("You are at the first song. No previous song available.\n");
+        return 0;
+    }
+    current = current->prev;
+    printf("Now playing: %s by %s\n", current->song, current->artist);
+    return 1;
 }
 int Shuffle_PlayList(){//pranav
   
