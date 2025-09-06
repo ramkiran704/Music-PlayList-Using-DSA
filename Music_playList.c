@@ -10,13 +10,24 @@ struct Music {
   struct Music* next;
   struct Music* prev;
 };
-int Display_Specific_Music(struct Music* Node){
+int Display_Specific_Music(struct Music* Node){ 
   if(Node!=NULL){
     printf("SONG NAME:%s\tARTIST NAME:%s",Node->song,Node->artist);
   }
 }
 int Create_Music(){//pranav
-  
+struct Music* Create_Music(char* title, char* artist) {
+    struct Music* newNode = (struct Music*)malloc(sizeof(struct Music));
+    if (newNode == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(1);
+    }
+    strcpy(newNode->song, title);
+    strcpy(newNode->artist, artist);
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    return newNode;
+}
 }
 void Display_PlayList(){// rishabh
 
@@ -103,8 +114,43 @@ int PlayPrev(){//parvathy
     printf("Now playing: %s by %s\n", current->song, current->artist);
     return 1;
 }
-int Shuffle_PlayList(){//pranav
-  
+void Shuffle_PlayList() {
+    if (head == NULL || head->next == NULL) {
+        printf("Playlist is too short to shuffle.\n");
+        return;
+    }
+    int count = 0;
+    struct Music* temp = head;
+    while (temp != NULL) {
+        count++;
+        temp = temp->next;
+    }
+    struct Music** nodeArray = (struct Music**)malloc(count * sizeof(struct Music*));
+    temp = head;
+    for (int i = 0; i < count; i++) {
+        nodeArray[i] = temp;
+        temp = temp->next;
+    }
+    srand(time(NULL)); 
+    for (int i = count - 1; i > 0; i--) {
+        int j = rand() % (i + 1);
+        struct Music* swapTemp = nodeArray[i];
+        nodeArray[i] = nodeArray[j];
+        nodeArray[j] = swapTemp;
+    }
+    head = nodeArray[0];
+    head->prev = NULL;
+    current = head; 
+    
+    for (int i = 0; i < count - 1; i++) {
+        nodeArray[i]->next = nodeArray[i+1];
+        nodeArray[i+1]->prev = nodeArray[i];
+    }
+    nodeArray[count-1]->next = NULL;
+    
+    free(nodeArray);
+    printf("Playlist has been shuffled! 🔀\n");
+}
 }
 int main(){//ram
   int choice;
