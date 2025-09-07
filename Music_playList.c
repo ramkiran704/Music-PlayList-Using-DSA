@@ -10,6 +10,9 @@ struct Music {
   struct Music* next;
   struct Music* prev;
 };
+
+struct Music *head = NULL, *current = NULL;
+
 int Display_Specific_Music(struct Music* Node){ 
   if(Node!=NULL){
     printf("SONG NAME:%s\tARTIST NAME:%s",Node->song,Node->artist);
@@ -29,8 +32,22 @@ struct Music* Create_Music(char* title, char* artist) {
     return newNode;
 }
 }
-void Display_PlayList(){// rishabh
+void Display_PlayList() {
+    struct Music* temp = head;
+    int idx = 1;
 
+    if (temp == NULL) {
+        printf("Playlist is empty.\n");
+        return;
+    }
+
+    printf("\n----- PLAYLIST -----\n");
+    while (temp != NULL) {
+        printf("%d. %s - %s\n", idx, temp->song, temp->artist);
+        temp = temp->next;
+        idx++;
+    }
+    printf("--------------------\n");
 }
 void Add_Music(char*title, char*artist)//Richa
 {
@@ -69,8 +86,26 @@ void Remove_Music(char*title)// richa
   }
   printf("Song not found\n");  
 }
-int Search_Music(){// rishabh
+int Search_Music() {
+    char title[50];
+    struct Music* temp = head;
 
+    printf("ENTER THE SONG NAME: ");
+    scanf("%49s", title); 
+
+    while (temp != NULL) {
+        if (strcmp(temp->song, title) == 0) {
+            printf("Found!\n");
+            Display_Specific_Music(temp);
+            printf("\n");
+            current = temp; //found song = current song
+            return 1;
+        }
+        temp = temp->next;
+    }
+
+    printf("Song not found\n");
+    return 0;
 }
 int Search_Music_Artist(char artistname[]){//ram
   struct Music* temp=head;
