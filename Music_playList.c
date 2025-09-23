@@ -212,14 +212,17 @@ int main() {
         switch (choice) {
             case 1:
                 printf("ENTER THE SONG NAME: ");
-                scanf("%s", song_name);
+                getchar();
+                fgets(song_name,sizeof(song_name),stdin);
+                getchar();
                 printf("ENTER THE ARTIST NAME: ");
-                scanf("%s", artist_name);
+                fgets(artist_name,sizeof(artist_name),stdin);
                 Add_Music(song_name, artist_name);
                 break;
             case 2:
                 printf("ENTER THE SONG TO REMOVE: ");
-                scanf("%s", song_name);
+                getchar();
+                fgets(song_name,sizeof(song_name),stdin);
                 Remove_Music(song_name);
                 break;
             case 3:
@@ -227,7 +230,8 @@ int main() {
                 break;
             case 4:
                 printf("ENTER THE NAME OF ARTIST: ");
-                scanf("%s", artist_name);
+                getchar();
+                fgets(artist_name,sizeof(artist_name),stdin);
                 Search_Music_Artist(artist_name);
                 break;
             case 5:
