@@ -166,38 +166,50 @@ void Shuffle_PlayList() {
         printf("PLAYLIST IS TOO SHORT TO SHUFFLE.\n");
         return;
     }
+
     int count = 0;
     struct Music* temp = head;
     while (temp != NULL) {
         count++;
         temp = temp->next;
     }
-    struct Music** nodeArray = (struct Music**)malloc(count * sizeof(struct Music*));
+
+    struct Music* nodeArray[count];
     temp = head;
     for (int i = 0; i < count; i++) {
         nodeArray[i] = temp;
         temp = temp->next;
     }
-    srand(time(NULL));
+
     for (int i = count - 1; i > 0; i--) {
         int j = rand() % (i + 1);
-        struct Music* swapTemp = nodeArray[i];
+        struct Music* tempNode = nodeArray[i];
         nodeArray[i] = nodeArray[j];
-        nodeArray[j] = swapTemp;
+        nodeArray[j] = tempNode;
     }
+
     head = nodeArray[0];
     head->prev = NULL;
-    current = head;
-
     for (int i = 0; i < count - 1; i++) {
         nodeArray[i]->next = nodeArray[i + 1];
         nodeArray[i + 1]->prev = nodeArray[i];
     }
     nodeArray[count - 1]->next = NULL;
 
-    free(nodeArray);
+    current = head;
+
     printf("PLAYLIST HAS BEEN SHUFFLED!\n");
     printf("--------------------\n");
+    Display_PlayList();
+}
+
+void Free_Playlist() {
+    struct Music* temp;
+    while (head != NULL) {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
 }
 
 int main() {
