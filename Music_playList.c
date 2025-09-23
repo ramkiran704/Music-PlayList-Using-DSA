@@ -96,7 +96,8 @@ int Search_Music() {
     struct Music* temp = head;
 
     printf("ENTER THE SONG NAME: ");
-    scanf("%49s", title);
+    getchar();
+    fgets(title,sizeof(title),stdin);
 
     while (temp != NULL) {
         if (strcmp(temp->song, title) == 0) {
