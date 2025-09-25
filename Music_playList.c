@@ -227,7 +227,6 @@ int main() {
                 printf("ENTER THE SONG NAME: ");
                 getchar();
                 fgets(song_name,sizeof(song_name),stdin);
-                getchar();
                 printf("ENTER THE ARTIST NAME: ");
                 fgets(artist_name,sizeof(artist_name),stdin);
                 Add_Music(song_name, artist_name);
